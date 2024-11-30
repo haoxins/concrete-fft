@@ -36,7 +36,7 @@
 #![cfg_attr(not(feature = "std"), doc = "```ignore")]
 //! use concrete_fft::c64;
 //! use concrete_fft::ordered::{Plan, Method};
-//! use dyn_stack::{PodStack, GlobalPodBuffer, ReborrowMut};
+//! use dyn_stack::{PodStack, GlobalPodBuffer};
 //! use num_complex::ComplexFloat;
 //! use std::time::Duration;
 //!
@@ -53,10 +53,10 @@
 //! ];
 //!
 //! let mut transformed_fwd = data;
-//! plan.fwd(&mut transformed_fwd, stack.rb_mut());
+//! plan.fwd(&mut transformed_fwd, stack);
 //!
 //! let mut transformed_inv = transformed_fwd;
-//! plan.inv(&mut transformed_inv, stack.rb_mut());
+//! plan.inv(&mut transformed_inv, stack);
 //!
 //! for (actual, expected) in transformed_inv.iter().map(|z| z / N as f64).zip(data) {
 //!     assert!((expected - actual).abs() < 1e-9);
